@@ -10,11 +10,10 @@ const errorLog = () => console.log('Некорректный ввод!');
 FIRST_TASK_BUTTON.addEventListener('click', function () {
   const num = +prompt('Введите число которое хотите преобразовать:');
   const numSystem = +prompt('В какую систему исчисления хотите преобразовать число? \nВведите числовое значение от 2 до 36:');
+  const numSystemIsCorrect = numSystem >= 2 && numSystem <= 36;
   
-  if (
-    isFinite(num) === isFinite(numSystem) &&
-    numSystem >= 2 &&
-    numSystem <= 36) console.log(num.toString(numSystem));
+  if (isFinite(num) === isFinite(numSystem) && numSystemIsCorrect) 
+    console.log(num.toString(numSystem));
   else errorLog();
 });
 
@@ -28,5 +27,5 @@ SECOND_TASK_BUTTON.addEventListener('click', function () {
     if (isFinite(secondNum) && secondNum !== 0) 
       console.log(`Ответ: ${firstNum + secondNum}, ${(firstNum / secondNum).toFixed(2)}`);
     else errorLog();
-  } else errorLog();
+} else errorLog();
 });
