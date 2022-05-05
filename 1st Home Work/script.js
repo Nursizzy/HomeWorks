@@ -13,7 +13,7 @@ FIRST_TASK_BUTTON.addEventListener('click', function () {
   const numSystemIsCorrect = numSystem >= 2 && numSystem <= 36;
   
   if (isFinite(num) === isFinite(numSystem) && numSystemIsCorrect) 
-    console.log(`Ответ: ${num.toString(numSystem)}`);
+    console.log(`Результат: ${num.toString(numSystem)}`);
   else errorLog();
 });
 
