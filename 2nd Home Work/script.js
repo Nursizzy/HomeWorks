@@ -51,7 +51,7 @@ console.log('Вторая задача:', selectFromInterval([1, 2, 3, 4], 2, 5)
 
 // Third Task:
 let range = {
-  from: 12,
+  from: 1,
   to: 10,
   [Symbol.iterator]() {
     let from = this.from;
