@@ -22,9 +22,7 @@
 const myIterable = { from: 1, to: 4 };
 for (let item of myIterable) {
  console.log(item); // 1, 2, 3, 4
-}
-
-const myIterable = { from: 'aaa', to: 4 };
+} const myIterable = { from: 'aaa', to: 4 };
 for (let item of myIterable) { // Ошибка!
  console.log(item);
 }
