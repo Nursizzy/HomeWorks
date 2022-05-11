@@ -1,5 +1,5 @@
 ///////////////// .....ДОМАШНЕЕ ЗАДАНИЕ №2.....\\\\\\\\\\\\\\\\\\\\\\\\
-// Task 1:
+// First Task:
 function makeObjectDeepCopy(object) {
   const deepCopy = Object.create(
     Object.getPrototypeOf(object),
@@ -17,7 +17,7 @@ function makeObjectDeepCopy(object) {
   return deepCopy;
 }
 
-// Test object
+// Test for first task:
 const newObject = {
   name: 'Nurs',
   lastName: 'Bast',
@@ -30,28 +30,29 @@ const newObject = {
 
 console.log('Первая задача:', makeObjectDeepCopy(newObject)); // success
 
-// Task 2
+// Second Task
 const onlyNumbers = function (array, int1, int2) {
   return (
     array.every((elemet) => typeof elemet === 'number') && isFinite(int1, int2)
   );
 };
+
 function selectFromInterval(arr, int1, int2) {
   if (arr instanceof Array && onlyNumbers(arr, int1, int2)) {
     return arr.filter((x) =>
       int1 > int2 ? x >= int2 && x <= int1 : x >= int1 && x <= int2
-    );
+    ); // таким образом попытался избавиться от многоэтажности ифов, но чувствую что это тоже несовсем правильно
   } else {
     return 'Ошибка!';
   }
 }
-
+// Test for second task:
 console.log('Вторая задача:', selectFromInterval([1, 2, 3, 4], 2, 5));
 
-// Task 3
+// Third Task:
 let range = {
-  from: 1,
-  to: 5,
+  from: 12,
+  to: 10,
   [Symbol.iterator]() {
     let from = this.from;
     let to = this.to;
@@ -61,20 +62,18 @@ let range = {
     return {
       next() {
         if (!isTrue || fromOverTo) {
-          console.log('error');
-        }
-        if (from <= to) {
+          console.log('Ошибка!');
+        } if (from <= to) {
           return {
             done: false,
             value: from++,
           };
-        }
-        return { done: true, value: from };
+        } return { done: true };
       },
     };
   },
 };
-// range = { from: 1, to: 4 };
+// Test for third task:
 console.log('Третья задача:');
 for (let item of range) {
   console.log(item);
