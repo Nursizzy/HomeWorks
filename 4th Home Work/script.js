@@ -7,9 +7,7 @@ const concatStrings = (function () {
   return function concatInner(str, separator) {
     if (typeof str === 'string') {
       stringsArr.push(str);
-      typeof separator === 'string'
-        ? (firstSeparator = separator)
-        : (firstSeparator = '');
+      typeof separator === 'string' ? (firstSeparator = separator) : (firstSeparator = ''); // тут вместо второго ифа решил еще раз тернари оператор использовать
 
       return concatInner;
     } else {
@@ -23,12 +21,12 @@ const concatStrings = (function () {
 })();
 
 // Testing
-console.log(concatStrings('first')('second')('third')());
-console.log(concatStrings('first', null)('second')());
-console.log(concatStrings('first', '123')('second')('third')());
-console.log(concatStrings('some-value')('')('')(null));
-console.log(concatStrings('some-value')(2));
-console.log(concatStrings('some-value')('333')(123n));
+console.log(concatStrings('first')('second')('third')()); // верно!
+console.log(concatStrings('first', null)('second')());// верно!
+console.log(concatStrings('first', '123')('second')('third')());// верно!
+console.log(concatStrings('some-value')('')('')(null));// верно!
+console.log(concatStrings('some-value')(2));// верно!
+console.log(concatStrings('some-value')('333')(123n));// верно!
 
 // Second Task
 class Calculator {
@@ -81,9 +79,9 @@ class Calculator {
 const calculator = new Calculator(2, 3);
 const logCalculatorDiv = calculator.logDiv;
 
-calculator.logSum();
-calculator.logDiv();
-calculator.setX(15);
-calculator.logDiv();
-logCalculatorDiv();
-calculator.setY(444n);
+calculator.logSum();// верно!
+calculator.logDiv();// верно!
+calculator.setX(15);// верно!
+calculator.logDiv();// верно!
+logCalculatorDiv();// верно!
+calculator.setY(444n);// верно!
