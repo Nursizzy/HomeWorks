@@ -14,14 +14,12 @@ class Car {
 
   // Сеттер и геттер для brand
   set brand(brand) {
-    const isValid =
-      typeof brand === 'string' && brand.length > 1 && brand.length <= 50;
+    const isValid = typeof brand === 'string' && brand.length > 1 && brand.length <= 50;
 
     if (!isValid) {
-      throw new Error(
-        'Ошибка! Cтрока должна быть от 1 до 50 символов включительно.'
-      );
+      throw new Error('Ошибка! Cтрока должна быть от 1 до 50 символов включительно.');
     }
+    
     return (this.#brand = brand);
   }
 
@@ -31,14 +29,12 @@ class Car {
 
   // Сеттер и геттер для Model
   set model(model) {
-    const isValid =
-      typeof model === 'string' && model.length > 1 && model.length <= 50;
+    const isValid = typeof model === 'string' && model.length > 1 && model.length <= 50;
 
     if (!isValid) {
-      throw new Error(
-        'Ошибка! Cтрока должна быть от 1 до 50 символов включительно.'
-      );
+      throw new Error('Ошибка! Cтрока должна быть от 1 до 50 символов включительно.');
     }
+    
     return (this.#model = model);
   }
 
@@ -48,15 +44,12 @@ class Car {
 
   // Сеттер и геттер для yearOfManufacturing
   set yearOfManufacturing(year) {
-    const isValid =
-      typeof year === 'number' &&
-      year >= 1900 &&
-      year <= new Date().getFullYear();
+    const isValid = typeof year === 'number' && year >= 1900 && year <= new Date().getFullYear();
+    
     if (!isValid) {
-      throw new Error(
-        'Ошибка! Число должно быть от 1900 до текущего года включительно.'
-      );
+      throw new Error('Ошибка! Число должно быть от 1900 до текущего года включительно.');
     }
+    
     return (this.#yearOfManufacturing = year);
   }
 
@@ -67,20 +60,25 @@ class Car {
   // Сеттер и геттер для maxSpeed
   set maxSpeed(value) {
     const isValid = typeof value === 'number' && value > 100 && value < 300;
+    
     if (!isValid) {
       throw new Error('Ошибка! Число должно быть от 100 до 300 км/ч.');
     }
+    
     return (this.#maxSpeed = value);
   }
   get maxSpeed() {
     return this.#maxSpeed;
   }
+  
   // Сеттер и геттер для maxFuelVolume
   set maxFuelVolume(volume) {
     const isValid = typeof volume === 'number' && volume > 5 && volume <= 20;
+    
     if (!isValid) {
       throw new Error('Ошибка! Число должно быть от 5 до 20 литров.');
     }
+    
     return (this.#maxFuelVolume = volume);
   }
 
@@ -90,9 +88,10 @@ class Car {
 
   // Сеттер и геттер для fuelConsumption
   set fuelConsumption(value) {
-    if (typeof value !== 'number') {
-      throw new Error('Ошибка! Должно быть число в л/100км.');
+    if (typeof value !== 'number' && value < 1) {
+      throw new Error('Ошибка! Должно быть положительное число в л/100км.');
     }
+    
     return (this.#fuelConsumption = value);
   }
 
@@ -120,6 +119,7 @@ class Car {
     if (this.#isStarted) {
       throw new Error('Машина уже заведена!');
     }
+    
     return (this.#isStarted = true);
   }
 
@@ -134,10 +134,9 @@ class Car {
   fillUpGasTank(value) {
     if (typeof value !== 'number' || value < 1) {
       throw new Error('Неверное количество топлива для заправки!');
-    } else if (
-      value > this.#maxFuelVolume ||
-      value + this.#currentFuelVolume > this.#maxFuelVolume
-    ) {
+    } 
+    
+    else if ( value > this.#maxFuelVolume || value + this.#currentFuelVolume > this.#maxFuelVolume) {
       throw new Error('Топливный бак будет переполнен!');
     }
 
@@ -149,19 +148,24 @@ class Car {
     const hoursIsValid = !isNaN(hours) && hours > 0;
     const distance = speed * hours;
     const fuelNeeded = distance * (this.#fuelConsumption / 100);
+    
     if (!speedIsValid || !hoursIsValid) {
-      throw new Error(
-        `${
-          !speedIsValid ? 'Неверная скорость!' : 'Неверное количество часов!'
-        }'`
-      );
-    } else if (speed > this.#maxSpeed) {
+      throw new Error(`${!speedIsValid ? 'Неверная скорость!' : 'Неверное количество часов!'}'`);
+    } 
+    
+    else if (speed > this.#maxSpeed) {
       throw new Error('Машина не может ехать так быстро!');
-    } else if (!this.#isStarted) {
+    } 
+    
+    else if (!this.#isStarted) {
       throw new Error('Машина должна быть заведена чтобы ехать!');
-    } else if (this.#currentFuelVolume < fuelNeeded) {
+    } 
+    
+    else if (this.#currentFuelVolume < fuelNeeded) {
       throw new Error('Недостаточно топлива');
-    } else {
+    } 
+    
+    else {
       this.#currentFuelVolume -= fuelNeeded;
       this.#mileage += distance;
     }
