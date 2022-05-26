@@ -18,11 +18,11 @@ class Stack {
     if (this._stack.length === 0) {
       throw new Error('Ошибка! Пустой стэк.');
     }
+    
     return this._stack.pop();
   };
 
-  peek = () =>
-    this._stack.length === 0 ? null : this._stack[this._stack.length - 1];
+  peek = () => this._stack.length === 0 ? null : this._stack[this._stack.length - 1];
 
   isEmpty = () => this._stack.length === 0;
 
