@@ -2,31 +2,31 @@
 //Task:
 class Stack {
   constructor(size = 10) {
-    this._maxSize = size;
-    this._stack = [];
+    this.maxSize = size;
+    this.stack = [];
   }
 
   push = (el) => {
-    if (this._stack.length === this._maxSize) {
+    if (this.stack.length === this.maxSize) {
       throw new Error('Ошибка! Стэк переполнен!');
     }
 
-    return this._stack.push(el);
+    return this.stack.push(el);
   };
 
   pop = () => {
-    if (this._stack.length === 0) {
+    if (this.stack.length === 0) {
       throw new Error('Ошибка! Пустой стэк.');
     }
     
-    return this._stack.pop();
+    return this.stack.pop();
   };
 
-  peek = () => this._stack.length === 0 ? null : this._stack[this._stack.length - 1];
+  peek = () => this.stack.length === 0 ? null : this.stack[this.stack.length - 1];
 
-  isEmpty = () => this._stack.length === 0;
+  isEmpty = () => this.stack.length === 0;
 
-  toArray = () => this._stack.toArray();
+  toArray = () => this.stack;
 
   static fromIterable(iterable) {
     if (iterable[Symbol.iterator] === undefined) {
