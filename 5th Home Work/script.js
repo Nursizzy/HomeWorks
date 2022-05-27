@@ -54,7 +54,7 @@ class Stack {
       arrayElement = arrayElement.previous;
     } while (arrayElement);
     
-    return array.reverse();
+    return array;
   };
 
   static fromIterable(iterable) {
