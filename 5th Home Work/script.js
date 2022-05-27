@@ -3,30 +3,59 @@
 class Stack {
   constructor(size = 10) {
     this.maxSize = size;
-    this.stack = [];
+    this.curSize = 0;
+    this.topElement;
   }
 
   push = (el) => {
-    if (this.stack.length === this.maxSize) {
+    if (this.curSize === this.maxSize) {
       throw new Error('Ошибка! Стэк переполнен!');
     }
 
-    return this.stack.push(el);
+    const data = {
+      el,
+      previous: null,
+    };
+
+    if (!this.topElement) {
+      this.topElement = data;
+    } 
+    
+    else {
+      data.previous = this.topElement;
+      this.topElement = data;
+    }
+
+    this.curSize += 1;
   };
 
   pop = () => {
-    if (this.stack.length === 0) {
+    if (this.curSize === 0) {
       throw new Error('Ошибка! Пустой стэк.');
     }
+
+    const popNewElement = this.topElement;
     
-    return this.stack.pop();
+    this.topElement = popNewElement.previous;
+    this.curSize -= 1;
+    return popNewElement.el;
   };
 
-  peek = () => this.stack.length === 0 ? null : this.stack[this.stack.length - 1];
+  peek = () => (this.curSize === 0 ? null : this.topElement.el);
 
-  isEmpty = () => this.stack.length === 0;
+  isEmpty = () => this.curSize === 0;
 
-  toArray = () => this.stack;
+  toArray = () => {
+    const array = [];
+    let arrayElement = this.topElement;
+    
+    do {
+      array.push(arrayElement.el);
+      arrayElement = arrayElement.previous;
+    } while (arrayElement);
+    
+    return array.reverse();
+  };
 
   static fromIterable(iterable) {
     if (iterable[Symbol.iterator] === undefined) {
