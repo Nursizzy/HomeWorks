@@ -71,9 +71,7 @@ class Calculator {
     memoryDisplay.innerText = this.memoryItem;
 
     if (this.operation != null) {
-      return (this.previousNum.innerText = `${this.output(this.previousElem)} ${
-        this.operation
-      }`);
+      return (this.previousNum.innerText = `${this.output(this.previousElem)} ${this.operation}`);
     }
 
     return (this.previousNum.innerText = '');
