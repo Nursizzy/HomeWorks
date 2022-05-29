@@ -19,9 +19,7 @@ class Stack {
 
     if (!this.topElement) {
       this.topElement = data;
-    } 
-    
-    else {
+    } else {
       data.previous = this.topElement;
       this.topElement = data;
     }
@@ -38,6 +36,7 @@ class Stack {
     
     this.topElement = popNewElement.previous;
     this.curSize -= 1;
+    
     return popNewElement.el;
   };
 
