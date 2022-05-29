@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Calculator</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script
+      src="https://kit.fontawesome.com/4a213b28dc.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="calculator">
+      <div class="favorites" title="Add To Favorites">
+        <a onClick="return addToFavourite(this);">
+          <i class="fa-solid fa-bookmark"> Add to Favorites</i></a
+        >
+      </div>
+      <!-- Specials -->
+      <div class="specials">
+        <button class="button mc special">MC</button>
+        <button class="button mr special">MR</button>
+        <button class="button mplus special">M+</button>
+        <button class="button mminus special">M-</button>
+      </div>
+      <!-- Output -->
+      <div class="output">
+        <div class="firstsection">
+          <div>M:</div>
+          <div class="memory">0</div>
+        </div>
+        <div class="secondsection"><div class="currentNum"></div></div>
+        <div class="thirdsection"><div class="previousNum"></div></div>
+      </div>
+      <!-- First row -->
+      <button data-all-clear class="button clear double">AC</button>
+      <button class="button operation-reverse">
+        <i class="fa-solid fa-plus-minus"></i>
+      </button>
+      <button class="button operation">÷</button>
+      <!-- Second row -->
+      <button class="button number">7</button>
+      <button class="button number">8</button>
+      <button class="button number">9</button>
+      <button class="button operation">x</button>
+      <!-- Third row -->
+      <button class="button number">4</button>
+      <button class="button number">5</button>
+      <button class="button number">6</button>
+      <button class="button operation">-</button>
+      <!-- Fourth row -->
+      <button class="button number">1</button>
+      <button class="button number">2</button>
+      <button class="button number">3</button>
+      <button class="button operation">+</button>
+      <!-- Fifth row -->
+      <button class="button delete">
+        <i class="fa-solid fa-delete-left"></i>
+      </button>
+      <button class="button number">.</button>
+      <button class="button number">0</button>
+      <button class="button result">=</button>
+    </div>
+    <!-- Calculator class -->
+    <script src="Calculator.js"></script>
+    <!-- Main script -->
+    <script src="script.js"></script>
+  </body>
+</html>
