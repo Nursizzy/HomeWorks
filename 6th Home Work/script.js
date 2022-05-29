@@ -134,9 +134,7 @@ class Car {
   fillUpGasTank(value) {
     if (typeof value !== 'number' || value < 1) {
       throw new Error('Неверное количество топлива для заправки!');
-    } 
-    
-    else if ( value > this.#maxFuelVolume || value + this.#currentFuelVolume > this.#maxFuelVolume) {
+    } else if ( value > this.#maxFuelVolume || value + this.#currentFuelVolume > this.#maxFuelVolume) {
       throw new Error('Топливный бак будет переполнен!');
     }
 
@@ -151,21 +149,13 @@ class Car {
     
     if (!speedIsValid || !hoursIsValid) {
       throw new Error(`${!speedIsValid ? 'Неверная скорость!' : 'Неверное количество часов!'}'`);
-    } 
-    
-    else if (speed > this.#maxSpeed) {
+    } else if (speed > this.#maxSpeed) {
       throw new Error('Машина не может ехать так быстро!');
-    } 
-    
-    else if (!this.#isStarted) {
+    } else if (!this.#isStarted) {
       throw new Error('Машина должна быть заведена чтобы ехать!');
-    } 
-    
-    else if (this.#currentFuelVolume < fuelNeeded) {
+    } else if (this.#currentFuelVolume < fuelNeeded) {
       throw new Error('Недостаточно топлива');
-    } 
-    
-    else {
+    } else {
       this.#currentFuelVolume -= fuelNeeded;
       this.#mileage += distance;
     }
